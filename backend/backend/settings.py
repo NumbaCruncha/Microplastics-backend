@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,7 @@ SECRET_KEY = '6-s)9#7#n&4%r3blux%-)r&1ra6xg1z7+!_lt2z-3dc7d%wqrm'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['143.198.121.32', 'sigma-analytics.co.nz', 'localhost']
 
 # from corsheaders.defaults import default_headers
 
@@ -91,11 +92,11 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'leaf-test',
-        'USER': 'postgres',
-        'PASSWORD': '0racle',
+        'NAME': 'postgres',
+        'USER': 'admin',
+        'PASSWORD': 'kiusFR3456',
         'HOST': '127.0.0.1',
-        'PORT': '5433',
+        'PORT': '5432',
     }
 }
 
@@ -137,13 +138,15 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-GDAL_LIBRARY_PATH = 'C:\\OSGeo4W64\\bin\\gdal204'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
-GEOS_LIBRARY_PATH = 'C:\\OSGeo4W64\\bin\\geos_c'
+# GDAL_LIBRARY_PATH = 'C:\\OSGeo4W64\\bin\\gdal204'
 
-OGR_LIBRARY_PATH = 'C:\\OSGeo4W64\\bin\\ogr_OCI'
+# GEOS_LIBRARY_PATH = 'C:\\OSGeo4W64\\bin\\geos_c'
 
-PROJ_LIBRARY_PATH = 'C:\\OSGeo4W64\\bin\\proj_5_2'
+# OGR_LIBRARY_PATH = 'C:\\OSGeo4W64\\bin\\ogr_OCI'
+
+# PROJ_LIBRARY_PATH = 'C:\\OSGeo4W64\\bin\\proj_5_2'
 
 # REST_FRAMEWORK = {
 #     'DEFAULT_RENDERER_CLASSES': (
