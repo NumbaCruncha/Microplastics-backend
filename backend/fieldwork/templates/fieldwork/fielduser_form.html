@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+<body>
+  <!-- <input class="w3-input w3-section w3-border" type="text" placeholder="Email" required name="Email">
+  <input class="w3-input w3-section w3-border" type="text" placeholder="Subject" required name="Subject">
+  <input class="w3-input w3-section w3-border" type="text" placeholder="Comment" required name="Comment"> -->
+
+  <p>Enter information about your observation into the form below</p>
+  {% block content %}
+  <form action="{% url 'fieldwork:fielduser-create' %}" method="POST">{% csrf_token %}
+      {{ form.as_p }} 
+    <!-- <input id="fname" class="w3-input w3-section w3-border" type="text"  placeholder="First name" required name="fname">
+    <input id="lname" class="w3-input w3-section w3-border" type="text"  placeholder="Last Name" required name="lname"> -->
+    <!-- <button class="w3-button w3-black w3-section" type="submit"> -->   
+      <!-- <i class="fas fa-truck-monster" href="favicon.ico"></i> -->
+       <!-- UPLOAD
+    </button> -->
+    <input type="submit" value="Submit">
+  </form>
+  {% endblock %}
+</body>
+</html>
+
+
