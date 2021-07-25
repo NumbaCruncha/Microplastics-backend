@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +27,7 @@ SECRET_KEY = '6-s)9#7#n&4%r3blux%-)r&1ra6xg1z7+!_lt2z-3dc7d%wqrm'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['api.sigma-analytics.co.nz', 'sigma-analytics.co.nz', 'localhost']
+ALLOWED_HOSTS = ['api.sigma-analytics.co.nz', 'sigma-analytics.co.nz', '127.0.0.1', 'localhost']
 
 # from corsheaders.defaults import default_headers
 
@@ -47,9 +48,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'rest_framework',
+    'rest_framework_simplejwt.token_blacklist',
     'django_extensions',
-    'corsheaders'
+    'django_filters',
 
 ]
 
@@ -124,7 +127,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'NZ'
+TIME_ZONE = 'Pacific/Auckland'
 
 USE_I18N = True
 
@@ -156,10 +159,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 
 REST_FRAMEWORK = {
+        'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
-    ]
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+        # 'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+    # ]
 }
 
 
@@ -174,3 +180,15 @@ CORS_ORIGIN_WHITELIST = [
 CORS_ALLOWED_ORIGINS =[
     "https://api.sigma-analytics.co.nz",
 ]
+
+CSRF_TRUSTED_ORIGINS = [
+    'www.test-cors.org',
+]
+
+CORS_ALLOW_CREDENTIALS = True
+
+SIMPLE_JWT = {
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': False
+}

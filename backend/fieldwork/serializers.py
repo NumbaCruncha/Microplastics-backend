@@ -1,20 +1,17 @@
 from rest_framework import serializers
-from .models import Observation, FieldUser
+from .models import Observation
 from django.contrib.auth.models import User
+from django.utils.timezone import now
+from rest_flex_fields import FlexFieldsModelSerializer
 
-class ObservationSerializer(serializers.ModelSerializer):
+class ObservationSerializer(FlexFieldsModelSerializer):
     class Meta:
         model = Observation
-        fields = ('id', 'datetime', 'sample_type', 'location')
+        fields = ('id', 'datetime', 'user', 'sample_type', 'location')
+
+# class UserSerializer(FlexFieldsModelSerializer):
+#     class Meta:
+#         model = User
+#         fields = ['id', 'username']
 
 
-class FieldUserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = FieldUser
-        fields = ('id', 'fname', 'lname')
-
-
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ('id', 'username', 'first_name', 'last_name', 'password')

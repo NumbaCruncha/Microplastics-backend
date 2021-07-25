@@ -15,15 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from fieldwork.views import ObservationViewSet, FieldUserViewSet, UserViewSet
+from fieldwork.views import ObservationViewSet
 from django.views.generic import RedirectView
 from rest_framework import routers
 
 
 router = routers.DefaultRouter()
 router.register(r'observations', ObservationViewSet, 'observations')
-router.register(r'fieldusers', FieldUserViewSet, 'fieldusers')
-router.register(r'users', UserViewSet, 'users')
 
 urlpatterns = [
     # path('', RedirectView.as_view(url='api/')),

@@ -1,6 +1,6 @@
 # from django.contrib import admin
 from django.contrib.gis import admin
-from .models import Observation, Organisation, FieldUser
+from .models import Observation, Organisation
 
 
 class customGeoAdmin(admin.GeoModelAdmin):
@@ -9,6 +9,6 @@ class customGeoAdmin(admin.GeoModelAdmin):
     
 admin.site.register(Observation, customGeoAdmin) 
 admin.site.register(Organisation, admin.GeoModelAdmin) 
-admin.site.register(FieldUser, admin.GeoModelAdmin)
+
 
 
