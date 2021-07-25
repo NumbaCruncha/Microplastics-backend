@@ -26,8 +26,8 @@ router.register(r'fieldusers', FieldUserViewSet, 'fieldusers')
 router.register(r'users', UserViewSet, 'users')
 
 urlpatterns = [
-    path('', RedirectView.as_view(url='fieldwork/')),
-    path('api/', include(router.urls)),
+    # path('', RedirectView.as_view(url='api/')),
+    path('', include(router.urls)),
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
     

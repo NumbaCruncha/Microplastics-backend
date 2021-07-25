@@ -26,7 +26,7 @@ SECRET_KEY = '6-s)9#7#n&4%r3blux%-)r&1ra6xg1z7+!_lt2z-3dc7d%wqrm'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['143.198.121.32', 'sigma-analytics.co.nz', 'localhost']
+ALLOWED_HOSTS = ['api.sigma-analytics.co.nz', 'sigma-analytics.co.nz', 'localhost']
 
 # from corsheaders.defaults import default_headers
 
@@ -167,10 +167,10 @@ REST_FRAMEWORK = {
 LOGIN_REDIRECT_URL = "/"
 
 CORS_ORIGIN_WHITELIST = [
- 'http://localhost:3000'
+ "https://api.sigma-analytics.co.nz",
 
 ]
 
 CORS_ALLOWED_ORIGINS =[
-    "http://127.0.0.1:3000"
+    "https://api.sigma-analytics.co.nz",
 ]
