@@ -15,6 +15,7 @@ gunicorn = "*"
 psycopg2 = "*"
 drf-flex-fields = "*"
 django-filter = "*"
+python-dotenv = "*"
 
 [dev-packages]
 

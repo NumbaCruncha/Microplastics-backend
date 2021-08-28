@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import os
 from datetime import timedelta
+#django #python
+from dotenv import load_dotenv
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,18 +25,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '6-s)9#7#n&4%r3blux%-)r&1ra6xg1z7+!_lt2z-3dc7d%wqrm'
+SECRET_KEY = str(os.getenv('SECRET_KEY'))
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['api.sigma-analytics.co.nz', 'sigma-analytics.co.nz', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['api.sigma-analytics.co.nz']
 
-# from corsheaders.defaults import default_headers
+from corsheaders.defaults import default_headers
 
-# CORS_ALLOW_HEADERS = list(default_headers) + [
-#     'my-custom-header',
-# ]
+CORS_ALLOW_HEADERS = list(default_headers) + [
+    'Access-Control-Allow-Origin',
+]
 
 CSRF_COOKIE_NAME = "csrftoken"
 
@@ -173,12 +177,12 @@ REST_FRAMEWORK = {
 LOGIN_REDIRECT_URL = "/"
 
 CORS_ORIGIN_WHITELIST = [
- "https://api.sigma-analytics.co.nz",
+ 'https://api.sigma-analytics.co.nz', 'https://sigma-analytics.co.nz', '127.0.0.1', 'localhost',
 
 ]
 
 CORS_ALLOWED_ORIGINS =[
-    "https://api.sigma-analytics.co.nz",
+    'https://api.sigma-analytics.co.nz', 'https://sigma-analytics.co.nz', '127.0.0.1', 'localhost',
 ]
 
 CSRF_TRUSTED_ORIGINS = [

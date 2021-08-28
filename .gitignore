@@ -1,1 +1,4 @@
 backend/static
+sites-available/
+/sites-available/
+.env

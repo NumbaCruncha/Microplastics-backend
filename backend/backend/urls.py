@@ -26,6 +26,7 @@ router.register(r'observations', ObservationViewSet, 'observations')
 urlpatterns = [
     # path('', RedirectView.as_view(url='api/')),
     path('', include(router.urls)),
+    path('auth/', include('auth.urls')),
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
     
