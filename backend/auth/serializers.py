@@ -2,8 +2,14 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.password_validation import validate_password
+from rest_flex_fields import FlexFieldsModelSerializer
 
 
+
+class UserSerializer(FlexFieldsModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'first_name', 'last_name', 'email', 'date_joined', 'last_login']
 
 
 class RegisterSerializer(serializers.ModelSerializer):

@@ -17,7 +17,7 @@ class Organisation(models.Model):
   
 class Observation(models.Model):
     datetime = models.DateTimeField(default=now)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1, related_name='observations', related_query_name='observations')
+    user = models.ForeignKey('auth.user', on_delete=models.CASCADE, default=1, related_name='observations', related_query_name='observations')
     location = PointField(default=Point(DEFAULT_LOCATION))
     sample_type = models.CharField(default='Unknown', max_length=200)
 

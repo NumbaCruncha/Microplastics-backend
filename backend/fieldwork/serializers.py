@@ -9,9 +9,6 @@ class ObservationSerializer(FlexFieldsModelSerializer):
         model = Observation
         fields = ('id', 'datetime', 'user', 'sample_type', 'location')
 
-# class UserSerializer(FlexFieldsModelSerializer):
-#     class Meta:
-#         model = User
-#         fields = ['id', 'username']
+
 
 

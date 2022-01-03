@@ -11,7 +11,6 @@ from .forms import ObservationForm
 from django.contrib.auth.models import User
 
 
-
 def index(request):
     return render(request, 'index.html')
 
@@ -32,7 +31,6 @@ class ObservationViewSet(viewsets.ModelViewSet):
     serializer_class = ObservationSerializer
     queryset = Observation.objects.all()
 
-    
 
 
 
